@@ -1,0 +1,20 @@
+{
+  "name": "implement-json-stringify",
+  "version": "1.0.0",
+  "description": "Creating a simple JSON.stringify() function. Youtube video -> https://youtu.be/VGvvyS4qTsw",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {
+    "parcel-bundler": "^1.6.1"
+  },
+  "devDependencies": {
+    "@babel/core": "7.2.0"
+  },
+  "resolutions": {
+    "@babel/preset-env": "7.13.8"
+  },
+  "keywords": []
+}

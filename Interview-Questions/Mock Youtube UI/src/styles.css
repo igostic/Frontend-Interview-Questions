@@ -1,0 +1,95 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.header {
+  display: block;
+  width: 100%;
+  background-color: blue;
+  height: 50px;
+}
+
+/* common classes */
+.container-flex-row {
+  display: flex;
+  flex-direction: row;
+  padding: 0 30px;
+}
+.text {
+  margin: 0;
+}
+
+.left-content {
+  flex: 3;
+  background-color: red;
+  height: 400px;
+}
+
+.right-content {
+  flex: 1;
+  background-color: green;
+}
+
+/* video container */
+.video-container {
+  background-color: yellow;
+  height: 400px;
+}
+
+/* video details */
+.video-details {
+  background-color: pink;
+  padding: 12px;
+}
+.view-count {
+  font-weight: bold;
+}
+
+/* video-comments */
+.video-comments {
+  background-color: gray;
+  margin: 0;
+  padding: 12px;
+}
+.video-comment-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.comment-item {
+  border-bottom: 1px solid black;
+  padding-bottom: 12px;
+}
+
+.comment-item:last-child {
+  border: 0;
+}
+
+.comment-photo {
+  border: 2px solid black;
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  margin: 12px 12px 0 0;
+}
+
+/* suggested videos  */
+.suggested-videos {
+  list-style-type: none;
+  padding: 6px;
+  margin: 0;
+}
+
+.suggested-item {
+  background: orange;
+  padding: 6px 0;
+  margin-bottom: 12px;
+}
+
+.vid-thumbnail {
+  background: white;
+  width: 150px;
+  height: 85px;
+  margin-right: 12px;
+}

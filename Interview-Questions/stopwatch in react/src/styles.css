@@ -1,0 +1,15 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+button {
+  margin: 10px;
+}
+
+.timer {
+  font-family: "Courier New", Courier, monospace;
+  width: 120px;
+  padding: 10px;
+  text-align: center;
+}
