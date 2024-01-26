@@ -1,0 +1,35 @@
+:root {
+  --default-color: #888;
+  --active-color: #f00;
+}
+
+.likeBtn {
+  border: 2px solid var(--default-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 32px;
+  cursor: pointer;
+  font-weight: bold;
+  height: 30px;
+  padding: 4px 8px;
+  margin-bottom: 5px;
+  color: var(--default-color);
+}
+
+.likeBtn:hover {
+  /* set only border color */
+  border-color: var(--active-color);
+  /* set color for inner data */
+  color: var(--active-color);
+}
+
+.liked,
+/* using same state hover too otherwise it will on :hover
+ for liked state makes everything as red
+*/
+.liked:hover {
+  background-color: var(--active-color);
+  border-color: var(--active-color);
+  color: #fff;
+}

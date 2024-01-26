@@ -1,0 +1,32 @@
+/* putting it to center */
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.grids {
+  display: grid;
+  max-width: 250px;
+  width: 100%;
+  padding: 20px;
+  gap: 10px;
+  /* border: 1px solid black; */
+}
+
+.cell {
+  background-color: transparent;
+  border: 1px solid black;
+  /* below prop making height 
+  and width equal for every cell
+   */
+  height: 0;
+  padding-bottom: 100%;
+  /* cursor: pointer; */
+}
+
+.cell-activated {
+  background-color: green;
+}

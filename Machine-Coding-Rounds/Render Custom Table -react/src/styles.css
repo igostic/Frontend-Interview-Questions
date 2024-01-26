@@ -1,0 +1,15 @@
+.App {
+  text-align: center;
+}
+
+.table-data {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table-data th,
+.table-data td {
+  padding: 8px 16px; /* Adjust padding as needed */
+  border: 1px solid #ddd;
+  text-align: left;
+}

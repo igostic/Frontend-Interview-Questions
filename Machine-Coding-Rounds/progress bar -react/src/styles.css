@@ -1,0 +1,38 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+
+.progress {
+  width: 80%;
+  height: 20px;
+  background-color: rgb(223, 222, 222);
+  border: 1px solid black;
+  border-radius: 15px;
+
+  /* this needed to show interviewer when you 
+  add .progress div css   */
+  overflow: hidden;
+  /* this is bec, the position of percentage
+    shifts to right from centre, so to marker
+    it center again using below prop   */
+  position: relative;
+}
+
+.progress span {
+  /* so that we can align it anywhere in viewport */
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* percentage was getting hidden in progress bar div */
+  z-index: 1;
+}
+
+.progress div {
+  height: 100px;
+  background-color: rgb(93, 143, 18);
+}

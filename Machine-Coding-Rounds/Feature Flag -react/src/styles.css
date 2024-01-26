@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  background: black;
+  color: white;
+  padding: 8px;
+  position: fixed;
+  width: 100%;
+}
+
+h3 {
+  color: cyan;
+  font-size: 24px;
+  margin-bottom: 32px;
+}
+
+.app {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.screen {
+  background: #222;
+  height: 100vh;
+  padding-top: 80px;
+}
+
+.btn {
+  display: block;
+  margin: 16px auto;
+  padding: 8px;
+  min-width: 200px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  font-size: 18px;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}

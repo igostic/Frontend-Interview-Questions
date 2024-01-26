@@ -1,0 +1,55 @@
+/* body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  font-family: "Cairo", sans-serif;
+}
+
+.accordion {
+  width: 300px;
+}
+
+.accordion-item {
+  margin-bottom: 5px;
+}
+
+.accordion-header {
+  background-color: #000000;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.accordion-content.active {
+  display: block;
+  max-height: 1000px;
+} */
+
+/* // simplified css */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.accordion-content.active {
+  max-height: 100px; /* Adjust as needed */
+}
+
+.accordion-header {
+  background-color: #000000;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+}
