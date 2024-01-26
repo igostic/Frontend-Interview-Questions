@@ -1,0 +1,21 @@
+body {
+  font-family: sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+#id1 {
+  /* margin-left:50px; */
+  align-self: start;
+}
+#id2 {
+  margin-left: 50px;
+  align-self: center;
+}
+
+#id3 {
+  /* margin-left:50px; */
+  align-self: end;
+}
