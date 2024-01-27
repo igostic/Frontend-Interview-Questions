@@ -1,0 +1,11 @@
+span {
+  cursor: pointer;
+}
+
+.star {
+  font-size: 50px;
+}
+
+.rated {
+  color: gold;
+}
