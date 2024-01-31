@@ -1,0 +1,8 @@
+.companyName {
+  display: flex;
+  flex-direction: row;
+}
+
+.children {
+  margin-left: 20px;
+}
