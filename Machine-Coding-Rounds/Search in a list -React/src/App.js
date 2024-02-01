@@ -2,18 +2,23 @@ import { useEffect, useState } from "react";
 import "./styles.css";
 
 export default function App() {
-  const [list, setList] = useState(["apple", "Kiwi", "pears"]);
+  const initialList = ["apple", "Kiwi", "pears"];
+
+  const [list, setList] = useState(initialList);
   const [searchText, setSearchText] = useState("");
+
+  useEffect(() => {
+    let filteredList = initialList.filter((item) =>
+      item.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setList(filteredList);
+  }, [searchText]);
+
   function handleChange(e) {
     const { value } = e.target;
     setSearchText(value);
   }
-  useEffect(() => {
-    let filteredList = list.filter((item) =>
-      item.toLowerCase().includes(searchText.toLowerCase()),
-    );
-    setList(filteredList);
-  }, [searchText]);
+
   return (
     <div className="App">
       <input value={searchText} onChange={handleChange} />
