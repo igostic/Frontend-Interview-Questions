@@ -13,6 +13,8 @@ class BrowserHistory {
     // if (this.current < this.history.length - 1) {
     //   // If the user navigated back and then loads a new URL,
     //   // we need to truncate the forward history.
+    // this.history = this.history.slice(0, this.current + 1);
+
     // }
     this.history.push(url); // Add the new URL to history.
     this.current++; // Move the current position forward.
