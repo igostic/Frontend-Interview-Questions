@@ -52,6 +52,29 @@ function curry(func) {
     }
   };
 }
+
+// or we can bind it - GreatFrontend
+// https://www.greatfrontend.com/questions/javascript/curry?list=lodash
+
+function curry(func) {
+  // The curry function takes a function 'func' as an argument.
+  return function curriedFunc(...args) {
+    // 'curriedFunc' is the curried version of the original function.
+
+    // Check if the number of arguments passed is greater than or equal to the
+    // number of arguments the original function expects.
+    if (args.length >= func.length) {
+      // If yes, we have enough arguments, so we call the original function with the provided arguments.
+      return func.apply(this, args);
+    } 
+
+    // If not, we return a new function that binds the current 'this' context and
+    // accumulates the current arguments using 'bind'.
+    // This new function can be used for the next level of currying.
+    return curriedFunc.bind(this, ...args);
+  };
+}
+
 // Method -2
 // const curry2 = (fn) => {
 //   const curriedFn = (...args) => {
