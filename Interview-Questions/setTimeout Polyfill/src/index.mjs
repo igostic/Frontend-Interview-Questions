@@ -48,6 +48,8 @@ function processCallbacks() {
       } else {
         // If not, request the browser to call processCallbacks() 
         // when the call stack is empty
+        // The window.requestIdleCallback() method queues a 
+        // function to be called during a browser's idle periods.
         requestIdleCallback(processCallbacks);
       }
     }
