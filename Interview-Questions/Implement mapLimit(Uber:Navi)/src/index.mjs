@@ -18,51 +18,59 @@ import "./styles.css";
 // callback: A function that should be called with the array
 // of outputs once all the inputs have been processed.
 
+// Simulates an asynchronous request to get a user name by ID
 function getNameById(id, callback) {
-  // simulating async request
+  // Simulating async request with a random delay
   const randomRequestTime = Math.floor(Math.random() * 100) + 200;
 
   setTimeout(() => {
+    // Callback with the result, "User" concatenated with the provided ID
     callback("User" + id);
   }, randomRequestTime);
 }
 
+// Splits an array into batches of a specified limit
 const chop = (inp, limit) => {
   let i = 0;
   let result = [];
   while (i < inp.length) {
+    // Pushing slices of the input array into the result array
     result.push(inp.slice(i, i + limit));
     i += limit;
   }
+  // Logging the sliced arrays (batches) to the console
   console.log("res-->>", result);
   return result;
 };
+
+// Main function for mapping inputs with a concurrency limit
 function mapLimit(inputs, limit, iterateeFn, callback) {
+  // Dividing input array into batches
   let chopped = chop(inputs, limit);
-  console.log(chopped);
+
+  // Reducing the batches to a promise chain for sequential processing
   let finalRes = chopped.reduce((prev, curr) => {
     return prev.then((val) => {
       return new Promise((resolve, reject) => {
         let temp = [];
-        // let completed = 0;
+        // Iterating through elements in the current batch
         curr.forEach((e) => {
+          // Applying the iteratee function asynchronously to each element
           iterateeFn(e, (res) => {
-            // if(error) {
-            //   reject(error);
-            // } else{
+            // Accumulating results in a temporary array
             temp.push(res);
-            // completed++;
-            // if(completed >= curr.length){
+            // Checking if all elements in the batch are processed
             if (temp.length >= curr.length) {
+              // Resolving the promise with the combined results
               resolve([...val, ...temp]);
             }
-            // }
           });
         });
       });
     });
   }, Promise.resolve([]));
 
+  // Handling the final results with the provided callback
   finalRes.then((res) => {
     callback(res);
   });
