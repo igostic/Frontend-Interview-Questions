@@ -12,6 +12,7 @@ document.getElementById("app").innerHTML = `
   </div>
   <h3>It restricts the number of requests that can be made within a specified time window. </h3
 `;
+
 class Ratelimiter {
   constructor(limit, windowInSeconds) {
     // Maximum number of requests allowed in the time window
@@ -23,10 +24,9 @@ class Ratelimiter {
   }
 
   isAllowed(clientId) {
-    // Change: Corrected spelling from cliendId to clientId
-    // time in seconds
+    // Time in seconds
     const timeInSeconds = Math.floor(Date.now() / 1000);
-    // subtract this.windowInSeconds seconds from the current time
+    // Subtract this.windowInSeconds seconds from the current time
     const requestTime = timeInSeconds - this.windowInSeconds;
     // Get all requests made by the client
     // or an empty array if none
@@ -37,7 +37,7 @@ class Ratelimiter {
     );
     // Check if the client has made more than
     // limit requests in the last time window
-    if (updatedRequests.length >= this.limit) return false; // Change: Check length of updatedRequests
+    if (updatedRequests.length >= this.limit) return false;
 
     updatedRequests.push(timeInSeconds);
     this.requests[clientId] = updatedRequests;
@@ -55,5 +55,6 @@ for (let i = 0; i < 5; i++) {
     } else {
       console.log(`Request ${i + 1} denied`);
     }
-  }, 300); // Introduce a delay that increases with each iteration
+  }, 300 * i); // Introduce a delay that increases with each iteration
 }
+
