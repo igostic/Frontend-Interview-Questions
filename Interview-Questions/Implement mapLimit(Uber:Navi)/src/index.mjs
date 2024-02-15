@@ -1,67 +1,71 @@
-import "./styles.css";
+// import "./styles.css";
 
-// Implement mapLimit, which is a utility function that produces a list
-// of outputs by mapping each input through an asynchronous iteratee
-// function. The provided limit dictates how many operations can occur
-// at once.
+// Implement mapLimit, a utility function that maps inputs through an asynchronous iteratee
+// with a specified limit on concurrent operations.
 
-// Inputs
-// inputs: An array of inputs.
-// limit: The maximum number of operations at any one time.
-// iterateeFn: The async function that should be called
-// with each input to generate the corresponding output.
-// It will have two arguments:
-//      input: The input being processed.
-//      callback: A function that will be called when the input
-// is finished processing. It will be provided one argument,
-// the processed output.
-// callback: A function that should be called with the array
-// of outputs once all the inputs have been processed.
+// Inputs:
+// - inputs: An array of inputs.
+// - limit: The maximum number of operations at any one time.
+// - iterateeFn: The async function called for each input to generate the corresponding output.
+//      It takes two arguments:
+//          - input: The input being processed.
+//          - callback: A function called when the input is finished processing,
+//              provided with one argument - the processed output.
+// - callback: A function called with the array of outputs once all inputs are processed.
 
-// Simulates an asynchronous request to get a user name by ID
+// Simulates an asynchronous request to get a user name by ID.
 function getNameById(id, callback) {
-  // Simulating async request with a random delay
+  // simulating async request
   const randomRequestTime = Math.floor(Math.random() * 100) + 200;
 
+  // Emulate an asynchronous request with a random delay.
   setTimeout(() => {
-    // Callback with the result, "User" concatenated with the provided ID
+    // Call the callback with the processed output.
     callback("User" + id);
   }, randomRequestTime);
 }
 
-// Splits an array into batches of a specified limit
+// Utility function to chop an array into smaller arrays of a given limit.
 const chop = (inp, limit) => {
   let i = 0;
   let result = [];
+
+  // Iterate through the input array and slice it into batches.
   while (i < inp.length) {
-    // Pushing slices of the input array into the result array
     result.push(inp.slice(i, i + limit));
     i += limit;
   }
-  // Logging the sliced arrays (batches) to the console
+
+  // Log the intermediate result for debugging purposes.
   console.log("res-->>", result);
+
+  // Return the array containing sliced batches.
   return result;
 };
 
-// Main function for mapping inputs with a concurrency limit
+// Main function for mapping inputs through an asynchronous iteratee function
+// with a specified limit on concurrent operations.
 function mapLimit(inputs, limit, iterateeFn, callback) {
-  // Dividing input array into batches
+  // Split the inputs into batches based on the specified limit.
   let chopped = chop(inputs, limit);
-
-  // Reducing the batches to a promise chain for sequential processing
+  console.log(chopped);
+  
+  // Use reduce and Promises to ensure sequential processing of batches.
   let finalRes = chopped.reduce((prev, curr) => {
     return prev.then((val) => {
       return new Promise((resolve, reject) => {
         let temp = [];
-        // Iterating through elements in the current batch
+
+        // Process each input in the current batch concurrently.
         curr.forEach((e) => {
-          // Applying the iteratee function asynchronously to each element
+          // Call the iteratee function with each input.
           iterateeFn(e, (res) => {
-            // Accumulating results in a temporary array
+            // Collect the processed results.
             temp.push(res);
-            // Checking if all elements in the batch are processed
+
+            // Check if all inputs in the batch have been processed.
             if (temp.length >= curr.length) {
-              // Resolving the promise with the combined results
+              // Resolve the promise with the accumulated results.
               resolve([...val, ...temp]);
             }
           });
@@ -70,16 +74,17 @@ function mapLimit(inputs, limit, iterateeFn, callback) {
     });
   }, Promise.resolve([]));
 
-  // Handling the final results with the provided callback
+  // Once all batches are processed, call the final callback with the results.
   finalRes.then((res) => {
     callback(res);
   });
 }
-//example:
+
+// Example usage:
 mapLimit([1, 2, 3, 4, 5], 2, getNameById, (allResults) => {
   console.log("output", allResults); // ["User1", "User2", "User3", "User4", "User5"]
 });
 
 // [1, 2, 3, 4, 5] => [[1, 2], [3, 4], [5]]
-// inputs in a single batch can be processed concurrently/parallely
-// each batch will be processed sequentially
+// Inputs in a single batch can be processed concurrently/parallely,
+// and each batch will be processed sequentially.
