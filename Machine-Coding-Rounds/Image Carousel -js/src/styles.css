@@ -3,15 +3,17 @@
   text-align: center;
 }
 
+/* Container for the entire image carousel */
 .slideshow {
-  position: relative;
-  max-width: 500px;
-  margin: 20px auto;
+  position: relative; /* Establishes positioning context for children */
+  max-width: 500px; /* Sets a maximum width for the carousel */
+  margin: 20px auto; /* Centers the carousel horizontally with top and bottom margins */
 }
 
+/* Individual slides within the carousel */
 .slide {
-  position: relative;
-  display: none;
+  position: relative; /* Establishes positioning context for children */
+  display: none; /* Initially hides all slides */
 }
 
 /* @keyframes fade {
@@ -23,25 +25,50 @@
   }
 } */
 
+/* Display the active slide */
 .slide.active {
-  display: block;
+  display: block; /* Shows the active slide */
+  /* Uncomment the following lines for a fade-in animation effect */
   /* animation-name: fade; */
-  animation-duration: 1.5s;
+  /* animation-duration: 1.5s; */
 }
 
+/* Ensure images within slides don't exceed their container */
 .slide img {
-  max-width: 100%;
+  max-width: 100%; /* Ensures images don't exceed the width of their container */
 }
 
+/* Positioning and styling for caption text */
 .slide span {
-  position: absolute;
-  left: 50%;
-  bottom: 20px;
-  transform: translateX(-50%);
-  color: #fff;
+  position: absolute; /* Positions the caption relative to the slide */
+  left: 50%; /* Centers the caption horizontally */
+  bottom: 20px; /* Places the caption 20px above the bottom of the slide */
+  transform: translateX(-50%); /* Centers the caption precisely */
+  color: #fff; /* Sets the caption text color to white */
 }
 
-.bulleted-navigation {
+/* Navigation buttons (prev and next) */
+.navigation {
+  position: absolute; /* Positions the navigation buttons relative to the container */
+  top: 50%; /* Centers the buttons vertically */
+  transform: translateY(
+    -100%
+  ); /* Shifts the buttons upward by their own height */
+  font-size: 2em; /* Sets the font size for the navigation buttons */
+  cursor: pointer; /* Changes the cursor to a pointer on hover */
+}
+
+/* Style for the previous button */
+.prev {
+  left: 10px; /* Positions the previous button 10px from the left edge */
+}
+
+/* Style for the next button */
+.next {
+  right: 10px; /* Positions the next button 10px from the right edge */
+}
+
+/* .bulleted-navigation {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,20 +86,4 @@
 
 .dot.active {
   background-color: skyblue;
-}
-
-.navigation {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-100%);
-  font-size: 2em;
-  cursor: pointer;
-}
-
-.prev {
-  left: 10px;
-}
-
-.next {
-  right: 10px;
-}
+} */
